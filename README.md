@@ -29,5 +29,36 @@ Finance Manager allows users to track transactions, manage accounts and categori
 
 ---
 
+## Installation
+
+# 1. Clone the repository
+git clone git@github.com:iamtheedgeee/Finance-Manager.git
+
+# 2. Navigate to the project folder
+cd Finance-Manager
+
+# 3. Install backend dependencies
+cd backend
+npm install
+
+# 4. Set up environment variables
+# Create a .env file in the backend folder with your PostgreSQL credentials, e.g.:
+# DATABASE_URL="postgresql://username:password@localhost:5432/financemanager"
+
+# 5. Initialize Prisma client and apply migrations
+npx prisma generate
+npx prisma migrate dev --name init
+
+# 6. Install frontend dependencies
+cd ../frontend
+npm install
+
+# 7. Run the backend server
+cd ../backend
+npm start
+
+# 8. Run the frontend development server
+cd ../frontend
+npm start
 
 
