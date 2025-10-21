@@ -5,6 +5,7 @@ import { useSelector,useDispatch } from "react-redux";
 import { getTransactions, setFilters } from "../../store/transactionSlice";
 import styles from "./Transactions.module.css"
 import CreateButton from "../../components/CreateButton/CreateButton";
+import Loading from "../../components/Loading/Loading"
 import TransactionItem from "./TransactionItem/TransactionItem";
 import Filter from './Filter/Filter'
 import { PlusCircle } from 'lucide-react';
@@ -13,18 +14,7 @@ import { useMediaQuery } from "react-responsive";
 export default function Transactions(){
     const dispatch=useDispatch()
     const {transactions,status,error,filters,meta}=useSelector((state)=>state.transaction)
-    const [showForm,setShowForm]=useState(false)
-    const [showImport,setShowImport]=useState(false)
     const [groupedTransactions,setGroupedTransactions]=useState({})
-    const isDesktop=useMediaQuery({minWidth:1024})
-    
-    //Transaction Form
-    function handleAdd(){setShowForm(true)}
-    function handleRemove(){setShowForm(false)}
-
-    //Import Form
-    function handleImport(){setShowImport(true)}
-    function removeImport(){setShowImport(false)}
 
     useEffect(()=>{
         if(status==='idle'){
@@ -44,16 +34,12 @@ export default function Transactions(){
             return acc
         },{})
         setGroupedTransactions(grouped)
-    },[transactions])
+    },[transactions]) 
     return(
-        <div className={styles.container}>
-            <div className={styles.top}>
-                {isDesktop&&<CreateButton func={handleAdd} text={'Add Transaction'} icon={<PlusCircle/>}/>}
-                <button className={styles.import} onClick={handleImport}>Import</button>
-            </div>
-            <Filter/>
-            <Overview/>
-            {transactions.length>0?
+        <>
+            {status==='loading' && <Loading/>}
+            {status==='success'&&
+                (transactions.length>0?
                 <div className={styles.table}>
                     {
                                         Object.entries(groupedTransactions).map(([date,transactions])=>{
@@ -74,9 +60,8 @@ export default function Transactions(){
                 </div>
                 :
                 <div className={styles.none}>No Transactions</div>
-            }
-            {showImport && <ImportForm hide={removeImport}/>}
-            {showForm &&<TransactionForm hideForm={handleRemove}/>}
-        </div>
+            )}
+            
+        </>
     )
 }

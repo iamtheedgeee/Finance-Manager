@@ -20,7 +20,7 @@ export const getBudgets=createAsyncThunk("budgets/getBudgets",async()=>{
 export const deleteBudget=createAsyncThunk("accounts/deleteBudget",async(id,{dispatch})=>{
     try{
         const res=await privateApi.delete(`/api/budgets/${id}`)
-        if(res.statusText==="Accepted"){
+        if(res.status===202){
             dispatch(getBudgets())
             dispatch(getCategories())
         }
@@ -55,7 +55,7 @@ export const editBudget=createAsyncThunk("accounts/editBudget",async(payload,{di
         return budget
     } catch(error){
         console.log(error)
-        if(error.response?.statusText==="Not Acceptable"){
+        if(error.response?.status===406){
             throw new Error("Budget With That Name Already Exists")
         }
         throw new Error("Failure in creating Budget")

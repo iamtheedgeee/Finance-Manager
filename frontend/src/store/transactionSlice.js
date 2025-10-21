@@ -44,7 +44,7 @@ export const getTransactions=createAsyncThunk("transactions/getTransactions",asy
 export const deleteTransaction=createAsyncThunk("transactions/deleteTransaction",async({id,type,amount,accountId},{dispatch})=>{
     try{
         const res=await privateApi.delete(`/api/transactions/${id}`,{data:{type,amount,accountId}})
-        if(res.statusText==="Accepted"){
+        if(res.status===202){
             dispatch(getTransactions())
             dispatch(getAccounts())
             dispatch(getSummary())

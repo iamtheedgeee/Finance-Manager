@@ -8,13 +8,13 @@ import {reset} from '../store/userSlice'
 export const signup=async (username,email,password)=>{
     try{
         const res=await publicApi.post('/auth/signup',{username,email,password})
-        if(res.statusText==="Created"){
+        if(res.status===201){
             store.dispatch(setUser(res.data.accessToken))
             return
 
         }
     } catch(error){
-        if(error.response?.statusText==="Not Acceptable"){
+        if(error.response?.status===406){
             throw new Error(`${error.response?.data.msg[0]} already exists`)
         }
         console.log(error)
@@ -25,15 +25,15 @@ export const signup=async (username,email,password)=>{
 export const login=async (username,password)=>{
     try{
         const res= await publicApi.post('/auth/login',{username,password})
-        if(res.statusText==="Accepted"){
+        if(res.status===202){
             store.dispatch(setUser(res.data.accessToken))
             return
         } 
     } catch(error){
-        if(error.response?.statusText==="Not Found"){
+        if(error.response?.status===404){
             throw new Error("No such User")
         }
-        else if(error.response?.statusText==="Unauthorized"){
+        else if(error.response?.status===401){
             throw new Error("Incorrect Password")
         }
         console.log(error)
@@ -43,7 +43,7 @@ export const login=async (username,password)=>{
 export const logout=async()=>{
     try{
         const res=await publicApi.post('/auth/logout')
-        if(res.statusText==="OK"){
+        if(res.status===200){
             store.dispatch(reset())
             navigateTo('/')
         }
@@ -55,14 +55,14 @@ export const logout=async()=>{
 export const refreshToken=async(refreshing)=>{
     try{
         const res=await publicApi.post('/auth/refresh')
-        if(res.statusText==="OK"){
+        if(res.status===200){
             if(refreshing){
                 store.dispatch(setToken(res.data.accessToken))
                 return
             }
             await store.dispatch(setUser(res.data.accessToken))
         } 
-        else if(res.statusText==="No Content"){
+        else if(res.status===204){
             store.dispatch(reset())
             navigateTo('/login')
         }

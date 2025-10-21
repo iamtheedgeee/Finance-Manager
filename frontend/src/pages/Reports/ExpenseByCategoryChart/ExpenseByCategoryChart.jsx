@@ -6,6 +6,7 @@ import BarChartFilter from '../BarChartFilter/BarChartFilter';
 import styles from '../charts.module.css'
 import { getExpenseByCategoryChartData } from '../../../services/appService';
 import { useRef } from 'react';
+import Loading from '../../../components/Loading/Loading';
 export default function ExpenseByCategoryChart(){
     const dispatch=useDispatch()
     const [loading,setLoading]=useState(false)
@@ -62,7 +63,9 @@ export default function ExpenseByCategoryChart(){
         <div className={styles.displayContainer}>
             <div className={styles.filter}><BarChartFilter settings={settings} setSettings={setSettings} categories={categories}/></div>
             {error&&<div className={styles.error}>{error}</div>}
-            {loading&& <div className={styles.loading}>loading....</div>}
+            {loading&& <div className={styles.loading}>
+                    <Loading/>
+                </div>}
             {(data && !loading && !error)&&
                 ((data.length>0)?
                     <div className={styles.chartContainer}>

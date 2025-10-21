@@ -7,6 +7,22 @@ main{
   max-height:100%;
   overflow-y:auto;
 }
+.transRepContainer{
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.top{
+    display:flex;
+    justify-content: space-between;
+    height:35px;
+}
+
+.import{
+    color:#324c5b;
+    background-color: white; 
+}
 
 .loading{
   height:100vh;

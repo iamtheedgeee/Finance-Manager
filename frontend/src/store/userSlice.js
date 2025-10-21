@@ -35,7 +35,7 @@ export const getSummary=createAsyncThunk("user/getSummary",async()=>{
     const query=(qs.stringify({date}))
     try{
         const res=await privateApi.get(`/api/users/summary?${query}`)
-        if(res.statusText==="OK"){
+        if(res.status===200){
             const summary=res.data
             return summary
         }
@@ -48,7 +48,7 @@ export const setUser=createAsyncThunk('user/setUser',async(token,{dispatch})=>{
     dispatch(setToken(token))
     try{
         const res= await privateApi.get('/api/users')
-        if(res.statusText==='OK'){
+        if(res.status===200){
             const {user}=res.data
             return user
         }

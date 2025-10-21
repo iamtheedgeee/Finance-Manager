@@ -5,6 +5,7 @@ import { getBudgets } from "../../store/budgetSlice";
 import styles from "./Budgets.module.css"
 import CreateButton from "../../components/CreateButton/CreateButton";
 import BudgetItem from "../../components/BudgetItem/BudgetItem";
+import Loading from "../../components/Loading/Loading";
 export default function Budgets(){
     const dispatch=useDispatch()
     const {budgets,status,error}=useSelector((state)=>state.budget)
@@ -27,9 +28,16 @@ export default function Budgets(){
                 <div className={styles.title}>Budgets</div>
             </div>
             <div className={styles.space}>
-                {budgets.map((budget)=>{
-                    return <BudgetItem key={budget.id} budget={budget}/>
-                })} 
+                {status==='success'?
+                    budgets.map((budget)=>{
+                        return <BudgetItem key={budget.id} budget={budget}/>
+                    })
+                :status==='loading'?
+                    <div className={styles.card}>
+                        <Loading/>
+                    </div>
+                :<div>error</div>
+                } 
                 <div className={styles.card}>
                     <div className={styles.text}>
                         Add a Budget to Track your spendings and make better spending decisions!

@@ -4,6 +4,7 @@ import styles from "../charts.module.css"
 import BarChartFilter from '../BarChartFilter/BarChartFilter';
 import { useSelector } from 'react-redux';
 import { getIncomeExpenseChartData } from '../../../services/appService';
+import Loading from '../../../components/Loading/Loading';
 
 
 export default function IncomeExpenseChart() {
@@ -41,7 +42,9 @@ export default function IncomeExpenseChart() {
             <div className={styles.displayContainer}>
                 <div className={styles.filter}><BarChartFilter settings={settings} setSettings={setSettings}/></div>
                 {error&&<div className={styles.error}>{error}</div>}
-                {loading&& <div className={styles.loading}>loading....</div>}
+                {loading&& <div className={styles.loading}>
+                        <Loading/>
+                    </div>}
                 {(data && !loading && !error)&&
                     ((data.length>0)?
                         <div className={styles.chartContainer}>

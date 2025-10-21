@@ -21,7 +21,7 @@ export const getAccounts=createAsyncThunk("accounts/getAccounts",async()=>{
 export const deleteAccount=createAsyncThunk("accounts/deleteAccount",async(id,{dispatch})=>{
     try{
         const res=await privateApi.delete(`/api/accounts/${id}`)
-        if(res.statusText==="Accepted"){
+        if(res.status===202){
             dispatch(getAccounts())
             dispatch(getSummary())
         }
@@ -41,7 +41,7 @@ export const createAccount=createAsyncThunk("accounts/createAccount",async(paylo
         return account
     } catch(error){
         console.log(error)
-        if(error.response?.statusText==="Not Acceptable"){
+        if(error.response?.status===406){
             throw new Error("Account With That Name Already Exists")
         }
         throw new Error("Failure in creating Account")
@@ -57,7 +57,7 @@ export const editAccount=createAsyncThunk("accounts/editAccount",async(payload,{
             return account
     } catch(error){
         console.log(error)
-        if(error.response?.statusText==="Not Acceptable"){
+        if(error.response?.status===406){
             throw new Error("Account With That Name Already Exists")
         }
         throw new Error("Failure Editing Account")

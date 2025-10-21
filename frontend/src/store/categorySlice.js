@@ -21,7 +21,7 @@ export const getCategories=createAsyncThunk("accounts/getCategories",async()=>{
 export const deleteCategory=createAsyncThunk("accounts/deleteCategory",async(id,{dispatch})=>{
     try{
         const res=await privateApi.delete(`/api/categories/${id}`)
-        if(res.statusText==="Accepted") dispatch(getCategories())
+        if(res.status===202) dispatch(getCategories())
     } catch(error){
         console.log(error)
         throw new Error ("Failed to Delete")
@@ -39,7 +39,7 @@ export const createCategory=createAsyncThunk("accounts/createCategory",async(pay
         return category
     } catch(error){
         console.log(error)
-        if(error.response?.statusText==="Not Acceptable"){
+        if(error.response?.status===406){
             throw new Error("Category With That Name Already Exists")
         }
         throw new Error("Failure in creating Category")
@@ -56,7 +56,7 @@ export const editCategory=createAsyncThunk("accounts/editCategory",async(payload
             return category
     } catch(error){
         console.log(error)
-        if(error.response?.statusText==="Not Acceptable"){
+        if(error.response?.status===406){
             throw new Error("Category With That Name Already Exists")
         }
         throw new Error("Failure in creating Category")

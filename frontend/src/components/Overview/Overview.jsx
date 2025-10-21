@@ -17,8 +17,8 @@ export default function Overview(){
     
     return(
         <div className={styles.container}>
-                {//summaryStatus==="success"&&
-                    isDesktop?
+                {summaryStatus==="success"?
+                    (isDesktop?
                         <>
                             <Display title={"Total Balance"} info={totalBalance} color="green"/>
                             <Display title={"Period Income"} info={totalIncome} color="green"/>
@@ -35,7 +35,28 @@ export default function Overview(){
                                 <Display title={"Period Income"} info={totalIncome} color="green"/>
                                 <Display title={"Period Expense"} info={totalExpense} color="green"/>
                             </div>
-                        </div>
+                        </div>)
+                :summaryStatus==="loading"?
+                    (isDesktop?
+                        <>
+                            <Display title={"Total Balance"} info={null} color="green"/>
+                            <Display title={"Period Income"} info={null} color="green"/>
+                            <Display title={"Period Expense"} info={null} color="green"/>
+                            <Display title={"Net Change"} info={null} color="green"/>
+                        </>
+                    :
+                        <div className={styles.mobileContainer}>
+                            <div>
+                                <Display title={"Total Balance"} info={null} color="green"/>
+                                <Display title={"Net Change"} info={null} color="green"/>
+                            </div>
+                            <div>
+                                <Display title={"Period Income"} info={null} color="green"/>
+                                <Display title={"Period Expense"} info={null} color="green"/>
+                            </div>
+                        </div>)
+                :(<div>error</div>)
+                    
                 }
         </div>
     )

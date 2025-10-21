@@ -7,15 +7,13 @@ import styles from './Reports.module.css'
 import RunningBalanceLineGraph from "./RunningBalanceLineGraph/RunningBalanceLineGraph";
 export default function Reports(){
     return(
-        <div className={styles.container}>
-            <Filter/>
-            <Overview/>
+        <>
             <div className={styles.chartsContainer}>
                 <IncomeExpenseChart/>
                 <ExpenseByCategoryChart/>
                 <ExpensePieChart type={'EXPENSE'}/>
                 <ExpensePieChart type={'INCOME'}/>
             </div>
-        </div>
+        </>
     )
 }

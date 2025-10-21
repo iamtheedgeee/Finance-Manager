@@ -3,6 +3,7 @@ import styles from '../charts.module.css'
 import { useState,useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getExpensePieChartData } from "../../../services/appService";
+import Loading from "../../../components/Loading/Loading";
 
 
 const COLORS = [
@@ -41,7 +42,9 @@ export default function ExpensePieChart({type}) {
     <div className={styles.title}>{type} Pie Chart</div>
     <div className={styles.displayContainer}>
         {error&&<div className={styles.error}>{error}</div>}
-        {loading&& <div className={styles.loading}>loading....</div>}
+        {loading&& <div className={styles.loading}>
+            <Loading/>
+          </div>}
         {(data && !loading && !error)&&
             ((data.length>0)?
                 <div className={styles.chartContainer}>
