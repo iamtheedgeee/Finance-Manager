@@ -1,0 +1,56 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base: mobile-first */
+*{
+  box-sizing: border-box;
+}
+html,body {
+  margin:0;
+  padding:0;
+  background-color: #f4f7fa;
+  font-family: 'Open Sans',sans-serif;
+  color:#324c5b;
+  font-size: 14px;
+  overflow-x: hidden;
+}
+
+a{
+  text-decoration: none;
+}
+
+button{
+  color:white;
+  border:none;
+  border-radius:3px;
+  background-color:#1a73e8;
+}
+input[type="date"],
+input[type="datetime-local"] {
+  position:relative;
+  text-align: center;
+}
+
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  right: 0; 
+  position:absolute;
+  height:100%;
+  width:100%;
+  opacity:0;              
+  cursor: pointer;        
+  border:1px solid red;
+}
+
+
+
+button:hover{
+  cursor:pointer;
+}
+

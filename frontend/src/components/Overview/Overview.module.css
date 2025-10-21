@@ -1,0 +1,16 @@
+
+.container{
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.mobileContainer{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+.mobileContainer div{
+    display:flex;
+    justify-content: space-between;
+}

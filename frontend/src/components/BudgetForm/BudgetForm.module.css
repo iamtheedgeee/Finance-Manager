@@ -1,0 +1,104 @@
+.formContainer{
+    position: absolute;
+    min-width:100vw;
+    min-height:100vh;
+    top:0;
+    left:0;
+    display:flex;
+    align-items:center;
+    background-color:rgba(0,0,0,0.5)
+}
+
+.mainContainer{
+    border:1px solid grey;
+    border-radius: 30px;
+    width:450px;
+    height: 350px;;
+    margin:auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    background-color:white;
+    border:none;
+
+}
+.xButton{
+    position:absolute;
+    top:30px;
+    right:30px;
+    cursor:pointer;
+    color:red;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.title{
+    margin: 0;
+    text-align:center;
+}
+.formItems{
+    width:400px;
+    margin:auto;
+    padding:2px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.formLabel{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    width:50%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.formInput{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: flex-start;
+}
+
+.label{
+    height:30px;
+    display: flex;
+    align-items: center;
+}
+
+.input{
+    box-sizing: border-box;
+    border-radius: 10px;
+    border:1px solid grey;
+    height:30px;
+    text-align: center;
+}
+
+.button{
+    width:200px;
+    background-color: black;
+    color:white;
+    margin:auto;
+    border:none;
+}
+
+.button:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+
+.error {
+  color: #d93025;
+  background-color: #fdecea;
+  border: 1px solid #f5c6cb;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin: auto;
+  text-align: center;
+  width:250px;
+}

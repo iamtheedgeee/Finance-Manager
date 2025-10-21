@@ -1,0 +1,46 @@
+.container{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.top{
+    display:flex;
+    justify-content:space-between;
+}
+.title{
+    text-align: left;
+    font-size: 16px;
+}
+
+.space{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap:10px;
+}
+
+.card{
+    width:250px;
+    height:200px;
+    border-radius:10px;
+    background-color: white;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+
+.text{
+    display:flex;
+    width:200px;
+    text-align: center;
+    color:#7f93a4;
+}
+
+@media(max-width:900px){
+    .space{
+        justify-content: center;
+    }
+}

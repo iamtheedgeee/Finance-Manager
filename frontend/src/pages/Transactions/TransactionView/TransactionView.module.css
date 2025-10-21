@@ -1,0 +1,102 @@
+.viewContainer{
+    position: fixed;
+    min-width:100vw;
+    min-height:100vh;
+    top:0;
+    left:0;
+    display:flex;
+    align-items:center;
+    background-color:rgba(0,0,0,0.5);
+}
+
+.card {
+  max-width: 400px;
+  margin: 1rem auto;
+  padding: 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  position:relative;
+}
+
+.xButton{
+    position:absolute;
+    top:10px;
+    right:10px;
+    cursor:pointer;
+    color:red;
+}
+
+.empty {
+  text-align: center;
+  color: #777;
+  padding: 2rem;
+  font-style: italic;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.category {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.id {
+  font-family: monospace;
+  color: #333;
+  font-size: 0.9rem;
+  background: #f5f5f5;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.income {
+  color: #0a8754;
+  background: #e6f7ef;
+}
+
+.expense {
+  color: #c0392b;
+  background: #fdecea;
+}
+
+.section {
+  border-top: 1px solid #eee;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.amount {
+  font-weight: 600;
+}
+
+.notes {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.4;
+}

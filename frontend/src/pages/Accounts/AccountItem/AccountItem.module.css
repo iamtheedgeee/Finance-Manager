@@ -1,0 +1,22 @@
+.container{
+    border-radius:10px;
+    background-color: white;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    cursor:pointer;
+    padding:20px;
+}
+
+.left{
+    display:flex;
+    gap:5px;
+}
+
+.delete{
+    color:red;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+

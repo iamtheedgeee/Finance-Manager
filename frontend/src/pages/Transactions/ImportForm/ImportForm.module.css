@@ -1,0 +1,63 @@
+.formContainer{
+    position: fixed;
+    min-width:100vw;
+    min-height:100vh;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    background-color:rgba(0,0,0,0.5);
+    z-index:2000
+}
+
+.mainContainer{
+    position:relative;
+    z-index:2001;
+    background-color:white;
+    border-radius:10px;
+    width:300px;
+    height:300px;
+    padding:10px;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;;
+    gap:25px;
+    align-items: center;
+}
+.title{
+    font-weight:700;
+    font-size:16px;
+    text-align:center;
+}
+.uploadForm{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:15px;
+    align-items:center;
+}
+.xButton{
+    position:absolute;
+    color:red;
+    top:5%;
+    right:5%;
+    cursor:pointer;
+}
+input[type='file']{
+    display:none
+}
+
+.label{
+    cursor:pointer;
+    border:1px dashed black;
+    padding:5px 10px;
+}
+
+.selected{
+    color:green;
+}
+
+.btn{
+    padding:5px 10px;
+}

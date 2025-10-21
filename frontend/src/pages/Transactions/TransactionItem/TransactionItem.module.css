@@ -1,0 +1,32 @@
+.container{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    cursor:pointer;
+    background-color: white;
+    padding:5px;
+    color: #7f93a4;
+}
+
+.left{
+    font-size: 14px;
+    color:#324c5b;
+    display:flex;
+    align-items: center;
+    gap:10px;
+}
+
+.amount{
+    font-weight:600;
+}
+.gain{
+    color:green;
+}
+
+.delete{
+    color:red;
+}
+
+.loss{
+    color:red;
+}

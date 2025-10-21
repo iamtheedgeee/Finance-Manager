@@ -1,0 +1,35 @@
+.container{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.title{
+    text-align: left;
+    font-size:18px;
+}
+
+.table{
+    background-color: white;
+    border-radius:10px;
+    padding:10px;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.entryTitle{
+    font-weight: 700;
+}
+
+.entryItems{
+    margin-top:7px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}

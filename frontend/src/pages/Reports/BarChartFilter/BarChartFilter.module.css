@@ -1,0 +1,51 @@
+.settings{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    margin-bottom: 10px;
+}
+
+.top{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.intervalSelect{
+    display:flex;
+    border:1px solid #7f93a4;
+    border-radius: 5px;
+
+}
+
+.interval{
+    width:70px;
+    height:30px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    cursor:pointer
+}
+.interval:nth-child(2){
+    border-left:1px solid #7f93a4;
+    border-right:1px solid #7f93a4;
+
+}
+.interval:hover{
+    color:#1a73e8;
+}
+
+.selected{
+    color:#1a73e8;
+}
+.chartSelect{
+    display:flex;
+    gap:5px; 
+}
+
+#category{
+    border:none;
+}
