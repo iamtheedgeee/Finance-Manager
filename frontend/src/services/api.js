@@ -1,14 +1,13 @@
 import axios from "axios"
 import store from "../store/store"
 import { refreshToken } from "./authService"
-
 export const publicApi=axios.create({
-    baseURL:"http://localhost:3000",
+    baseURL:import.meta.env.VITE_BASE_URL,
     withCredentials: true
 })
 
 export const privateApi=axios.create({
-    baseURL:"http://localhost:3000",
+    baseURL:import.meta.env.VITE_BASE_URL,
     withCredentials: true
 })
 

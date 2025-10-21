@@ -50,6 +50,7 @@ const {isLoggedIn}=useSelector((state)=>state.user)
 useEffect(()=>{
     setNavigator(navigate)
     if(!isLoggedIn){
+        console.log("loading")
         refreshToken()
     }
 },[isLoggedIn])
