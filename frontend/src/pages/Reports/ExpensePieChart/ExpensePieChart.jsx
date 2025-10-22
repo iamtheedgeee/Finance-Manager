@@ -3,6 +3,7 @@ import styles from '../charts.module.css'
 import { useState,useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getExpensePieChartData } from "../../../services/appService";
+import {useMediaQuery} from 'react-responsive'
 import Loading from "../../../components/Loading/Loading";
 
 
@@ -18,6 +19,7 @@ export default function ExpensePieChart({type}) {
   const [loading,setLoading]=useState(true)
   const [error,setError]=useState(null)
   const [data,setData]=useState(null)
+  const isDesktop=useMediaQuery({minWidth:905})
 
   async function fetchData(){
     setError(null)
@@ -47,9 +49,9 @@ export default function ExpensePieChart({type}) {
           </div>}
         {(data && !loading && !error)&&
             ((data.length>0)?
-                <div className={styles.chartContainer}>
+                <div className={styles.piechartContainer}>
                     <ResponsiveContainer width="100%" height="100%">
-                      <PieChart width={400} height={400}>
+                      <PieChart width="100%" height="100%">
                         <Pie
                           data={data}
                           cx="50%"
@@ -74,7 +76,7 @@ export default function ExpensePieChart({type}) {
                               </text>
                             );
                           }}
-                          outerRadius={150}
+                          outerRadius={isDesktop?150:100}
                           fill="#8884d8"
                           dataKey="value"
                         >

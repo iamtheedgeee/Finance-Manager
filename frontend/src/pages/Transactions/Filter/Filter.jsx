@@ -186,7 +186,7 @@ export default function Filter(){
                                 name='date' 
                                 className={styles.dateSelect}
                                 onChange={handlePresetChange}
-                                value={filters.date.preset||''}
+                                value={filters.date.preset||''} 
                             >
                                 <option value="today">Today</option>
                                 <option value="last7days">Last 7 days</option>
