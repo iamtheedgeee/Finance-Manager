@@ -34,7 +34,7 @@ export const createCategory=createAsyncThunk("accounts/createCategory",async(pay
         const {category}=res.data
         if(category){
             dispatch(getCategories())
-
+ 
         }
         return category
     } catch(error){

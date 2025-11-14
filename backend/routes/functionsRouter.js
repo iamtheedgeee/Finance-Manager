@@ -35,7 +35,6 @@ router.get('/get-date-from-preset',async(req,res)=>{
 router.post('/import',upload.single('spreadSheetFile'),async(req,res)=>{
     const userId=req.user
     const file=req.file
-    console.log(file)
     if(!file){
         throw new CustomError('Error',StatusCodes.BAD_REQUEST)
     }

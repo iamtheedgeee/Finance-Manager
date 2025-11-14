@@ -63,6 +63,7 @@ model Category{
   transactions      Transaction[]
   budget            Budget?
 
+  @@unique([userId, name])
 }
 
 model Transaction{

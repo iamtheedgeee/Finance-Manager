@@ -8,11 +8,11 @@ export const sendFileForImport= async(formData)=>{
         if(res.status===201){
             console.log("successful")
             const {count}=res.data
-            return count
+            return count 
         }
     } catch(error){
         console.log(error)
-        throw new Error('Something Went Wrong')
+        throw new Error('Something Went Wrong, check your file for errors')
     }
 }
 export const getDateRange= async(preset)=>{

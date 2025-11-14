@@ -37,31 +37,31 @@ export default function Transactions(){
     },[transactions]) 
     return(
         <>
-            {status==='loading' && <Loading/>}
-            {status==='success'&&
-                (transactions.length>0?
-                <div className={styles.table}>
-                    {
-                                        Object.entries(groupedTransactions).map(([date,transactions])=>{
-                                            return(
-                                                <div className={styles.tableEntry} key={date}>
-                                                    <div className={styles.entryTitle}>
-                                                        {date}
-                                                    </div>
-                                                    <div className={styles.entryItems}>
-                                                        {transactions.map((transaction)=>{
-                                                            return <TransactionItem key={transaction.id} transaction={transaction}/>
-                                                        })}
-                                                    </div>
-                                                </div>
-                                            )
-                                        })
-                    }
+{status==='loading' && <Loading/>}
+{status==='success'&&
+(transactions.length>0?
+<div className={styles.table}>
+{
+        Object.entries(groupedTransactions).map(([date,transactions])=>{
+            return(
+                <div className={styles.tableEntry} key={date}>
+                    <div className={styles.entryTitle}>
+                        {date}
+                    </div>
+                    <div className={styles.entryItems}>
+                        {transactions.map((transaction)=>{
+                            return <TransactionItem key={transaction.id} transaction={transaction}/>
+                        })}
+                    </div>
                 </div>
-                :
-                <div className={styles.none}>No Transactions</div>
-            )}
-            
-        </>
-    )
+            )
+        })
+}
+</div>
+:
+<div className={styles.none}>No Transactions</div>
+)}
+
+</>
+)
 }

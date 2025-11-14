@@ -219,7 +219,7 @@ async function fetchRunningBalanceData(){
   console.log(chartData)
 }
 async function getCategoryFromName(category,userId){
-  const Category=await prisma.category.findUniqueOrThrow({
+  const Category=await prisma.category.findFirstOrThrow({
     where:{
       name:category,
       userId
@@ -229,7 +229,7 @@ async function getCategoryFromName(category,userId){
 }
 
 async function getAccountIdFromName(account,userId){
-  const Account=await prisma.account.findUniqueOrThrow({
+  const Account=await prisma.account.findFirstOrThrow({
     where:{
       name:account,
       userId
@@ -246,7 +246,9 @@ async function importTransactions(data,userId){
       const accountId=await getAccountIdFromName(transaction.account,userId)
       const amount=transaction.amount
       const notes=transaction.notes
+      console.log(transaction.date)
       const date=new Date(transaction.date)
+      console.log(date)
       const netEffect=category.type==="EXPENSE"?-amount:amount
       const [trans]=await prisma.$transaction([
         prisma.transaction.create({
@@ -266,7 +268,6 @@ async function importTransactions(data,userId){
       ])
       count+=1
   }))
-  console.log(count)
   return count
 }
 module.exports={

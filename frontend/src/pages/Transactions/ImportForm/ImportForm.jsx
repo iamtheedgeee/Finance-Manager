@@ -3,9 +3,12 @@ import styles from './ImportForm.module.css'
 import { X } from 'lucide-react'
 import { sendFileForImport } from '../../../services/appService'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { getTransactions } from '../../../store/transactionSlice'
 export default function ImportForm({hide}){
     const [file,setFile]=useState(null)
     const [loading,setLoading]=useState(false)
+    const dispatch=useDispatch()
 
     function handleFile(e){
         setFile(e.target.files[0])
@@ -23,16 +26,17 @@ export default function ImportForm({hide}){
         try{
             const count=await sendFileForImport(formData)
             if(count){
+                dispatch(getTransactions())
                 setLoading(false)
                 alert(`Successfully imported ${count} transactions`)
                 hide()
             }
         } catch(error){
             setLoading(false)
-            alert('Something Went wrong check your file for errors and mismatches')
+            if(error instanceof Error){
+                alert(error.message)
+            }
         }
-
-
     }
     return (
         <div className={styles.formContainer}>

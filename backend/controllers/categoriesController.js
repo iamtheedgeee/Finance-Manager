@@ -17,7 +17,7 @@ const getCategories=async(req,res)=>{
     res.status(StatusCodes.OK).json({categories})
 
 }
-
+ 
 
 const getCategory=async(req,res)=>{
     const userId=req.user
